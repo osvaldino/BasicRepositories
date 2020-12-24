@@ -1,37 +1,84 @@
-## Welcome to GitHub Pages
+## 💻 Projeto
 
-You can use the [editor on GitHub](https://github.com/osvaldino/BasicRepositories/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+API REST.
+Gerenciamento onde seja possível Criar, Listar, Editar, Visualizar e Remover.<br>
+Optei por usar Repository Pattern, de forma bem simplificada.<br>
+Utilizei a versão 8.x do Laravel.<br>
+A API consiste no gerenciamento de dados relacionados a Categorias.<br>
+Não possui validações de forma mais detalhada, apenas no campo name.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Instalação do projeto
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+git clone https://github.com/osvaldino/BasicRepositories.git
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Acesse a pasta
 
-### Jekyll Themes
+```
+cd BasicRepositories
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/osvaldino/BasicRepositories/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Faça a instalação das dependências através do composer:
 
-### Support or Contact
+```
+composer install
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Faça uma cópia do seu arquivo .env:
+
+```
+cp .env.example .env
+```
+
+Configure suas variáveis de ambiente para seu banco de dados:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=database
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Gere uma nova chave para APP_KEY:
+
+```
+php artisan key:generate
+```
+
+Gere uma nova chave para JWT_SECRET:
+
+```
+php artisan jwt:secret
+```
+
+Se necessário, dê as permissões necessárias para permitir a escrita nas seguintes pastas:
+
+```storage``` e ```bootstrap```
+
+Exemplo:
+
+```
+chmod -R 775 storage
+```
+
+```
+chmod -R 775 bootstrap
+```
+
+Após a criação do banco de dados que será utilizado na aplicação e setá-lo no .env como descrito acima, execute o seguinte comando para a criação das tabelas através das migrations:
+
+```
+php artisan migrate
+```
+
+Para executar o projeto execute:
+
+```
+php artisan serve
+```
+
+---
+Feito com ♥ by Osvaldino Neto
